@@ -1,31 +1,34 @@
-# WhatsApp Automation
+# WhatsApp Message Scheduler
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=flat&logo=whatsapp&logoColor=white)
 
-> A Python script for scheduling and sending automated WhatsApp messages using pywhatkit.
+A small Python utility that schedules and sends a WhatsApp message at a specified time using the `pywhatkit` library and WhatsApp Web.
 
-## About
+## Overview
 
-A simple WhatsApp automation tool that uses the `pywhatkit` library to schedule and send messages to specified phone numbers at a given time. Opens WhatsApp Web automatically and sends the message at the scheduled time.
+This project demonstrates browser-based WhatsApp automation in Python. Given a recipient's phone number, a message, and a target time, it opens WhatsApp Web and delivers the message automatically at the scheduled minute. It is a focused, single-script example intended as a starting point for personal reminders or simple notification workflows.
+
+## Key Features
+
+- Schedule a message for a specific hour and minute (24-hour clock)
+- Automatic WhatsApp Web launch and message delivery via `pywhatkit.sendwhatmsg`
+- Basic exception handling that reports failures to the console
+
+## How It Works
+
+The script defines the recipient number (with country code), the message text, and the delivery time, then calls `pywhatkit.sendwhatmsg()`. `pywhatkit` opens WhatsApp Web in the default browser shortly before the scheduled time and sends the message. All logic lives in a single `try/except` block so any errors are caught and printed.
 
 ## Tech Stack
 
 - **Language:** Python 3
-- **Library:** pywhatkit
-
-## Features
-
-- **Scheduled messaging** — set exact hour and minute for delivery
-- **Automated browser launch** — opens WhatsApp Web automatically
-- **Error handling** — catches and reports failures gracefully
+- **Library:** [pywhatkit](https://pypi.org/project/pywhatkit/)
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.7+
-- WhatsApp account linked to WhatsApp Web
+- Python 3.7 or newer
+- A WhatsApp account already logged in to [WhatsApp Web](https://web.whatsapp.com/) in your default browser
 
 ### Installation
 
@@ -35,29 +38,34 @@ cd Whatsapp
 pip install pywhatkit
 ```
 
-### Run
+### Usage
+
+Edit `test.py` to set your recipient number, message, and delivery time:
+
+```python
+phone_number = "+91XXXXXXXXXX"   # recipient, with country code
+message      = "Your message here"
+hour         = 22                # 24-hour format
+minute       = 50
+```
+
+Then run:
 
 ```bash
 python test.py
 ```
 
-Edit `test.py` to set the recipient phone number, message, and scheduled time.
-
-## How It Works
-
-1. Set the recipient's phone number (with country code), message text, and delivery time
-2. `pywhatkit.sendwhatmsg()` opens WhatsApp Web in your browser at the specified time
-3. The message is typed and sent automatically
+Keep the browser window in focus while the message is being sent.
 
 ## Project Structure
 
 ```
 Whatsapp/
-├── test.py      # WhatsApp message scheduler
-├── LICENSE
+├── test.py      # Message scheduling script
+├── LICENSE      # Apache License 2.0
 └── README.md
 ```
 
 ## License
 
-This project is licensed under the [Apache License 2.0](LICENSE).
+Licensed under the [Apache License 2.0](LICENSE).
